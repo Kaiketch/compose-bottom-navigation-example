@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ComposeButtomNavigationExample"
 include ':app'
+include ':domain'
