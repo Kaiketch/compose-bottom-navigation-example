@@ -9,3 +9,6 @@ dependencyResolutionManagement {
 rootProject.name = "ComposeButtomNavigationExample"
 include ':app'
 include ':domain'
+include ':data:repository'
+include ':ui:main'
+include ':ui:common'

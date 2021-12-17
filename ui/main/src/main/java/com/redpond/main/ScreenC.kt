@@ -1,4 +1,4 @@
-package com.redpond.composebuttomnavigationexample
+package com.redpond.main
 
 import androidx.compose.runtime.Composable
 
