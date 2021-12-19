@@ -2,8 +2,9 @@ package com.redpond.repository
 
 import com.redpond.domain.User
 import com.redpond.domain.repository.UserRepository
+import javax.inject.Inject
 
-class UserRepositoryImpl : UserRepository {
+class UserRepositoryImpl @Inject constructor() : UserRepository {
     override fun fetchUser(id: Int): User {
         return User(
             id = id,
