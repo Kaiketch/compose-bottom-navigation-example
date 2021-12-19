@@ -19,6 +19,8 @@ object Dep {
         const val appcompat = "androidx.appcompat:appcompat:1.4.0"
         const val activityCompose = "androidx.activity:activity-compose:1.4.0"
         const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-beta02"
+        const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+        const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha02"
 
         object Compose {
             const val ui = "androidx.compose.ui:ui:${Versions.compose}"
@@ -29,5 +31,12 @@ object Dep {
                 "androidx.compose.material:material-icons-extended:${Versions.compose}"
             const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
         }
+    }
+
+    object Dagger {
+        private const val version = "2.38.1"
+        const val hiltAndroidGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
+        const val hiltAndroid = "com.google.dagger:hilt-android:$version"
+        const val hiltCompiler = "com.google.dagger:hilt-android-compiler:$version"
     }
 }

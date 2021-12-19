@@ -4,6 +4,8 @@ import com.redpond.Dep
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -14,4 +16,8 @@ dependencies {
     api project(":domain")
 
     implementation Dep.AndroidX.core
+    implementation Dep.AndroidX.hiltNavigationCompose
+
+    implementation(Dep.Dagger.hiltAndroid)
+    kapt(Dep.Dagger.hiltCompiler)
 }

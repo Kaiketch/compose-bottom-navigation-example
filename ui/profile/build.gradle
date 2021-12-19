@@ -5,6 +5,8 @@ import com.redpond.Versions
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -20,9 +22,10 @@ android {
 dependencies {
     api project(":domain")
     implementation project(":ui:common")
-    implementation project(":data:repository") // TODO
 
     implementation Dep.AndroidX.core
+    implementation Dep.AndroidX.hiltNavigationCompose
+    implementation Dep.AndroidX.viewModelCompose
 
     implementation Dep.AndroidX.navigationCompose
     implementation Dep.AndroidX.Compose.ui
@@ -30,4 +33,7 @@ dependencies {
     implementation Dep.AndroidX.Compose.materialIconsCore
     implementation Dep.AndroidX.Compose.materialIconsExtended
     implementation Dep.AndroidX.Compose.uiTooling
+
+    implementation(Dep.Dagger.hiltAndroid)
+    kapt(Dep.Dagger.hiltCompiler)
 }

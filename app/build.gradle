@@ -1,12 +1,14 @@
-import com.redpond.Dep
 import com.redpond.BuildConfig
+import com.redpond.Dep
+import com.redpond.Versions
 
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
-def compose_version = "1.0.5"
 android {
     compileSdk BuildConfig.compileSdk
 
@@ -37,21 +39,26 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = compose_version
+        kotlinCompilerExtensionVersion = Versions.compose
     }
 }
 
 dependencies {
     implementation project(":ui:main")
+    implementation project(":data:repository")
 
     implementation Dep.AndroidX.core
     implementation Dep.AndroidX.appcompat
     implementation Dep.material
+    implementation Dep.AndroidX.hiltNavigationCompose
+
     testImplementation Dep.junit
 
-    //Compose
     implementation Dep.AndroidX.activityCompose
     implementation Dep.AndroidX.Compose.material
     implementation Dep.AndroidX.Compose.materialIconsCore
     implementation Dep.AndroidX.Compose.materialIconsExtended
+
+    implementation(Dep.Dagger.hiltAndroid)
+    kapt(Dep.Dagger.hiltCompiler)
 }

@@ -1,5 +1,5 @@
-import com.redpond.Dep
 import com.redpond.BuildConfig
+import com.redpond.Dep
 
 plugins {
     id 'com.android.library'
