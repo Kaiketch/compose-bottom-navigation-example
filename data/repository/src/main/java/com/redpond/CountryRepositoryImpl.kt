@@ -1,5 +1,6 @@
-package com.redpond.repository
+package com.redpond
 
+import com.redpond.api.CountryApi
 import com.redpond.domain.repository.CountryRepository
 import com.redpond.fragment.Country
 import javax.inject.Inject
