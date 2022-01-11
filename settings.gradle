@@ -10,6 +10,7 @@ rootProject.name = "ComposeButtomNavigationExample"
 include ':app'
 include ':domain'
 include ':data:repository'
+include ':data:api'
 include ':ui:main'
 include ':ui:common'
 include ':ui:search'
