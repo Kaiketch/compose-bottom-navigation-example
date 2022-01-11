@@ -1,5 +1,6 @@
 package com.redpond.repository
 
+import com.redpond.domain.repository.CountryRepository
 import com.redpond.domain.repository.UserRepository
 import dagger.Binds
 import dagger.Module
@@ -14,4 +15,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun provideUserRepository(repository: UserRepositoryImpl): UserRepository
+
+    @Singleton
+    @Binds
+    abstract fun provideCountryRepository(repository: CountryRepositoryImpl): CountryRepository
 }
