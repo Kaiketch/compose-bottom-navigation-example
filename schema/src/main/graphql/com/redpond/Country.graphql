@@ -1,0 +1,10 @@
+fragment country on Country {
+    code
+    name
+}
+
+query Countries($filter: CountryFilterInput) {
+    countries(filter: $filter) {
+        ...country
+    }
+}
