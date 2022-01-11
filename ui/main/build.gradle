@@ -21,6 +21,7 @@ android {
 
 dependencies {
     api project(":domain")
+    api project(":ui:search")
     api project(":ui:profile")
     api project(":ui:common")
 

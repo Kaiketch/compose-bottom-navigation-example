@@ -18,6 +18,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.redpond.profile.ProfileScreen
+import com.redpond.search.SearchScreen
 
 sealed class Screen(
     val route: String,
@@ -69,9 +70,9 @@ fun MainContent() {
             modifier = Modifier.padding(paddingValues)
         ) {
 
-            composable(Screen.A.route) { ProfileScreen() }
+            composable(Screen.A.route) { SearchScreen() }
             composable(Screen.B.route) { ScreenB() }
-            composable(Screen.C.route) { ScreenC() }
+            composable(Screen.C.route) { ProfileScreen() }
         }
     }
 }
