@@ -39,4 +39,10 @@ object Dep {
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
         const val hiltCompiler = "com.google.dagger:hilt-android-compiler:$version"
     }
+
+    object Apollo {
+        private const val version = "3.0.0"
+        const val gradlePlugin = "com.apollographql.apollo3:apollo-gradle-plugin:$version"
+        const val runtime = "com.apollographql.apollo3:apollo-runtime:$version"
+    }
 }
