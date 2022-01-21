@@ -1,11 +1,8 @@
 package com.redpond.search
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.redpond.domain.User
 import com.redpond.domain.repository.CountryRepository
-import com.redpond.domain.repository.UserRepository
 import com.redpond.fragment.Country
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
