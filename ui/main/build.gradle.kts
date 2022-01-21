@@ -24,6 +24,7 @@ dependencies {
     api(project(":ui:common"))
     api(project(":ui:profile"))
     api(project(":ui:search"))
+    api(project(":ui:favorite"))
 
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.hiltNavigationCompose)
@@ -35,6 +36,8 @@ dependencies {
     implementation(Dep.AndroidX.Compose.materialIconsCore)
     implementation(Dep.AndroidX.Compose.materialIconsExtended)
     implementation(Dep.AndroidX.Compose.uiTooling)
+
+    implementation(Dep.Accompanist.navigationAnimation)
 
     implementation(Dep.Dagger.hiltAndroid)
     kapt(Dep.Dagger.hiltCompiler)

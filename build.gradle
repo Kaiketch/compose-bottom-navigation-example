@@ -10,7 +10,7 @@ buildscript {
         classpath(Dep.Kotlin.gradlePlugin)
         classpath(Dep.Dagger.hiltAndroidGradlePlugin)
         classpath(Dep.Apollo.gradlePlugin)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
+        classpath('org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10')
     }
 }
 
