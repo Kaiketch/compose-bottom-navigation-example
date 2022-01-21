@@ -1,78 +1,130 @@
 package com.redpond.main
 
-import androidx.annotation.StringRes
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.snap
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.composable
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.redpond.common.CODE
+import com.redpond.common.LocalNavController
+import com.redpond.common.Screen
+import com.redpond.common.bottomNavItems
+import com.redpond.favorite.FavoriteScreen
 import com.redpond.profile.ProfileScreen
+import com.redpond.search.DetailScreen
 import com.redpond.search.SearchScreen
 
-sealed class Screen(
-    val route: String,
-    @StringRes val resourceId: Int,
-    val icon: ImageVector
-) {
-    object A : Screen("screen_a", R.string.screen_a, Icons.Filled.Search)
-    object B : Screen("screen_b", R.string.screen_b, Icons.Filled.Favorite)
-    object C : Screen("screen_c", R.string.screen_c, Icons.Filled.Person)
-}
-
-val bottomNavItems = listOf(
-    Screen.A,
-    Screen.B,
-    Screen.C,
-)
-
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MainContent() {
-    val navController = rememberNavController()
+    val navController = rememberAnimatedNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    Scaffold(
-        bottomBar = {
-            BottomNavigation {
-                bottomNavItems.forEach { screen ->
-                    BottomNavigationItem(
-                        icon = { Icon(screen.icon, null) },
-                        label = { Text(stringResource(screen.resourceId)) },
-                        selected = currentDestination?.route == screen.route,
-                        onClick = {
-                            navController.navigate(screen.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        }
+    val isNavigationScreen = bottomNavItems.map { it.route }.contains(currentDestination?.route)
+
+    CompositionLocalProvider(
+        LocalNavController provides navController,
+    ) {
+        Scaffold(
+            bottomBar = {
+                if (isNavigationScreen) {
+                    AppBottomNavigation(
+                        navController = navController,
+                        currentDestination = currentDestination
                     )
                 }
             }
+        ) { paddingValues ->
+            AppNavHost(navController = navController, paddingValues = paddingValues)
         }
-    ) { paddingValues ->
-        NavHost(
-            navController = navController,
-            startDestination = Screen.A.route,
-            modifier = Modifier.padding(paddingValues)
-        ) {
+    }
+}
 
-            composable(Screen.A.route) { SearchScreen() }
-            composable(Screen.B.route) { ScreenB() }
-            composable(Screen.C.route) { ProfileScreen() }
+@Composable
+fun AppBottomNavigation(
+    navController: NavHostController,
+    currentDestination: NavDestination?
+) {
+    BottomNavigation {
+        bottomNavItems.forEach { screen ->
+            val icon = screen.icon
+            BottomNavigationItem(
+                icon = { icon?.let { Icon(icon, null) } },
+                label = { Text(stringResource(screen.resourceId)) },
+                selected = currentDestination?.route == screen.route,
+                onClick = {
+                    navController.navigate(screen.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
+            )
         }
+    }
+}
+
+@OptIn(ExperimentalAnimationApi::class)
+@Composable
+fun AppNavHost(
+    navController: NavHostController,
+    paddingValues: PaddingValues
+) {
+    AnimatedNavHost(
+        navController = navController,
+        startDestination = Screen.Search.route,
+        modifier = Modifier.padding(paddingValues),
+        enterTransition = {
+            // BottomNav画面同士の遷移ではEnterアニメーションは切る
+            if (bottomNavItems.map { it.route }.contains(initialState.destination.route) &&
+                bottomNavItems.map { it.route }.contains(targetState.destination.route)
+            ) {
+                fadeIn(animationSpec = snap())
+            } else {
+                fadeIn(animationSpec = tween(500))
+            }
+        },
+        exitTransition = {
+            // BottomNav画面との遷移ではチラつき対策も含め遷移元のExitアニメーションを切る
+            if (bottomNavItems.map { it.route }.contains(initialState.destination.route) ||
+                bottomNavItems.map { it.route }.contains(targetState.destination.route)
+            ) {
+                fadeOut(animationSpec = snap())
+            } else {
+                fadeOut(animationSpec = tween(500))
+            }
+        },
+    ) {
+        composable(Screen.Search.route) { SearchScreen() }
+        composable(
+            "${Screen.Detail.route}/{$CODE}",
+            arguments = listOf(navArgument(CODE) { type = NavType.StringType }),
+        ) {
+            DetailScreen()
+        }
+
+        composable(Screen.Favorite.route) { FavoriteScreen() }
+
+        composable(Screen.Profile.route) { ProfileScreen() }
     }
 }
