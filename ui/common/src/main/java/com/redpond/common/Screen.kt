@@ -23,5 +23,3 @@ val bottomNavItems = listOf(
     Screen.Favorite,
     Screen.Profile,
 )
-
-const val CODE = "code"

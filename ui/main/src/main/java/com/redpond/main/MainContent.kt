@@ -22,7 +22,7 @@ import androidx.navigation.navArgument
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import com.redpond.common.CODE
+import com.redpond.common.Args.Companion.CODE
 import com.redpond.common.LocalNavController
 import com.redpond.common.Screen
 import com.redpond.common.bottomNavItems
