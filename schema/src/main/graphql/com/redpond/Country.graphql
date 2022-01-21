@@ -8,3 +8,9 @@ query Countries($filter: CountryFilterInput) {
         ...country
     }
 }
+
+query Country($code: ID!) {
+    country(code: $code) {
+        ...country
+    }
+}

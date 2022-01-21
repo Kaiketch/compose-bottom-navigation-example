@@ -11,4 +11,8 @@ class CountryRepositoryImpl @Inject constructor(
     override suspend fun fetchCountries(): List<Country> {
         return countryApi.fetchCountries()
     }
+
+    override suspend fun fetchCountry(code: String): Country {
+        return countryApi.fetchCountry(code)
+    }
 }
