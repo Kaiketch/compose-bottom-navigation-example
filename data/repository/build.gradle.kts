@@ -13,8 +13,8 @@ android {
 }
 
 dependencies {
-    api(project(":domain"))
-    api(project(":data:api"))
+    implementation(project(":domain"))
+    implementation(project(":data:api"))
 
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.hiltNavigationCompose)

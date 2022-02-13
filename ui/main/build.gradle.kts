@@ -20,11 +20,11 @@ android {
 }
 
 dependencies {
-    api(project(":domain"))
-    api(project(":ui:common"))
-    api(project(":ui:profile"))
-    api(project(":ui:search"))
-    api(project(":ui:favorite"))
+    implementation(project(":domain"))
+    implementation(project(":ui:common"))
+    implementation(project(":ui:profile"))
+    implementation(project(":ui:search"))
+    implementation(project(":ui:favorite"))
 
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.hiltNavigationCompose)

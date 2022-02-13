@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    api(project(":domain"))
+    implementation(project(":domain"))
 
     implementation(Dep.AndroidX.core)
 

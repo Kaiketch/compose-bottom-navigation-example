@@ -47,8 +47,14 @@ android {
 }
 
 dependencies {
-    implementation(project(":ui:main"))
+    implementation(project(":domain"))
     implementation(project(":data:repository"))
+    implementation(project(":data:api"))
+    implementation(project(":ui:main"))
+    implementation(project(":ui:common"))
+    implementation(project(":ui:profile"))
+    implementation(project(":ui:search"))
+    implementation(project(":ui:favorite"))
 
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.appcompat)
