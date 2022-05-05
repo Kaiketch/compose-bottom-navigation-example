@@ -14,6 +14,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":schema"))
 
     testImplementation(Dep.junit)
     implementation(Dep.AndroidX.core)

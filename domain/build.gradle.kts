@@ -12,7 +12,5 @@ android {
 }
 
 dependencies {
-    api(project(":schema"))
-
     testImplementation(Dep.junit)
 }
