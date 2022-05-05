@@ -1,27 +1,30 @@
 package com.redpond.search
 
-import com.redpond.domain.repository.CountryRepository
-import com.redpond.fragment.Country
-import io.mockk.coEvery
-import io.mockk.mockk
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import com.google.common.truth.Truth.assertThat
+import com.redpond.domain.Country
+import com.redpond.domain.repository.CountryRepository
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import org.junit.After
+import org.junit.Before
+import org.junit.Test
 
-@OptIn(ExperimentalCoroutinesApi::class)
+@ExperimentalCoroutinesApi
 class SearchViewModelTest {
+
+    @MockK
+    lateinit var countryRepository: CountryRepository
 
     @Before
     fun setUp() {
+        MockKAnnotations.init(this)
         Dispatchers.setMain(UnconfinedTestDispatcher())
     }
 
@@ -31,9 +34,8 @@ class SearchViewModelTest {
     }
 
     @Test
-    fun textInit_success() = runTest{
+    fun textInit_success() = runTest {
 
-        val countryRepository = mockk<CountryRepository>()
         val list = listOf(
             Country("c1", "country1"),
             Country("c2", "country2"),
