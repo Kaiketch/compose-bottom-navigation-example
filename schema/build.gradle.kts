@@ -17,5 +17,6 @@ apollo {
 }
 
 dependencies {
+    testImplementation(Dep.junit)
     api(Dep.Apollo.runtime)
 }

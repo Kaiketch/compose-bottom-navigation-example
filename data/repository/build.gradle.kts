@@ -16,6 +16,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data:api"))
 
+    testImplementation(Dep.junit)
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.hiltNavigationCompose)
 

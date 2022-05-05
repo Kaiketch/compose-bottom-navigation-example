@@ -14,5 +14,5 @@ android {
 dependencies {
     api(project(":schema"))
 
-    implementation(Dep.AndroidX.core)
+    testImplementation(Dep.junit)
 }

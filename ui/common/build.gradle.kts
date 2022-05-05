@@ -21,6 +21,7 @@ android {
 dependencies {
     implementation(project(":domain"))
 
+    testImplementation(Dep.junit)
     implementation(Dep.AndroidX.core)
 
     implementation(Dep.AndroidX.navigationCompose)

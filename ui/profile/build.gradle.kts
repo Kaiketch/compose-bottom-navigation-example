@@ -23,6 +23,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":ui:common"))
 
+    testImplementation(Dep.junit)
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.viewModelCompose)
     implementation(Dep.AndroidX.hiltNavigationCompose)

@@ -26,6 +26,7 @@ dependencies {
     implementation(project(":ui:search"))
     implementation(project(":ui:favorite"))
 
+    testImplementation(Dep.junit)
     implementation(Dep.AndroidX.core)
     implementation(Dep.AndroidX.hiltNavigationCompose)
 

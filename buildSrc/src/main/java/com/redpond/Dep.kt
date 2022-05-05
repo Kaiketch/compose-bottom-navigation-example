@@ -1,13 +1,16 @@
 package com.redpond
 
 object Versions {
-    const val compose = "1.2.0-alpha01"
+    const val compose = "1.2.0-alpha07"
 }
 
 object Dep {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:7.0.4"
-    const val material = "com.google.android.material:material:1.5.0"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:7.1.1"
+    const val material = "com.google.android.material:material:1.6.0-rc01"
     const val junit = "junit:junit:4.+"
+    const val mockk = "io.mockk:mockk:1.12.3"
+    const val truth = "com.google.truth:truth:1.1.3"
+    const val robolectric = "org.robolectric:robolectric:4.7.3"
 
     object Kotlin {
         private const val version = "1.6.10"
@@ -16,16 +19,17 @@ object Dep {
         object Coroutines {
             private const val version = "1.6.0"
             const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+            const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
         }
     }
 
     object AndroidX {
-        const val core = "androidx.core:core-ktx:1.8.0-alpha01"
-        const val appcompat = "androidx.appcompat:appcompat:1.4.1"
-        const val activityCompose = "androidx.activity:activity-compose:1.4.0"
-        const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-rc01"
+        const val core = "androidx.core:core-ktx:1.8.0-alpha07"
+        const val appcompat = "androidx.appcompat:appcompat:1.6.0-alpha01"
+        const val activityCompose = "androidx.activity:activity-compose:1.6.0-alpha01"
+        const val navigationCompose = "androidx.navigation:navigation-compose:2.5.0-alpha04"
         const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
-        const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-rc01"
+        const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
 
         object Compose {
             const val ui = "androidx.compose.ui:ui:${Versions.compose}"
@@ -39,20 +43,20 @@ object Dep {
     }
 
     object Dagger {
-        private const val version = "2.40.5"
+        private const val version = "2.41"
         const val hiltAndroidGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
         const val hiltCompiler = "com.google.dagger:hilt-android-compiler:$version"
     }
 
     object Apollo {
-        private const val version = "3.0.0"
+        private const val version = "3.2.2"
         const val gradlePlugin = "com.apollographql.apollo3:apollo-gradle-plugin:$version"
         const val runtime = "com.apollographql.apollo3:apollo-runtime:$version"
     }
 
     object Accompanist {
-        private const val version = "0.22.0-rc"
+        private const val version = "0.24.6-alpha"
         const val navigationAnimation =
             "com.google.accompanist:accompanist-navigation-animation:$version"
     }
