@@ -1,6 +1,6 @@
 package com.redpond.domain.repository
 
-import com.redpond.fragment.Country
+import com.redpond.domain.Country
 
 interface CountryRepository {
     suspend fun fetchCountries(): List<Country>
