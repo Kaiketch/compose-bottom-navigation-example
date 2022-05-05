@@ -4,8 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.redpond.common.Args.Companion.CODE
+import com.redpond.domain.Country
 import com.redpond.domain.repository.CountryRepository
-import com.redpond.fragment.Country
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
