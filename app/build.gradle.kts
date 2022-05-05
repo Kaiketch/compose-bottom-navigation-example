@@ -48,8 +48,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
-    implementation(project(":data:repository"))
-    implementation(project(":data:api"))
+    implementation(project(":data:country"))
     implementation(project(":ui:main"))
     implementation(project(":ui:common"))
     implementation(project(":ui:profile"))
