@@ -1,16 +1,13 @@
-fragment country on Country {
-    code
-    name
-}
-
 query Countries($filter: CountryFilterInput) {
     countries(filter: $filter) {
-        ...country
+        code
+        name
     }
 }
 
 query Country($code: ID!) {
     country(code: $code) {
-        ...country
+        code
+        name
     }
 }
