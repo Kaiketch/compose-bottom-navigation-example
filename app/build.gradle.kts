@@ -49,7 +49,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data:country"))
-    implementation(project(":schema"))
+    implementation(project(":data:schema"))
     implementation(project(":ui:main"))
     implementation(project(":ui:common"))
     implementation(project(":ui:profile"))
