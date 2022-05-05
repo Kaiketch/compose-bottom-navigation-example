@@ -49,6 +49,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data:country"))
+    implementation(project(":schema"))
     implementation(project(":ui:main"))
     implementation(project(":ui:common"))
     implementation(project(":ui:profile"))
@@ -56,16 +57,10 @@ dependencies {
     implementation(project(":ui:favorite"))
 
     implementation(Dep.AndroidX.core)
-    implementation(Dep.AndroidX.appcompat)
     implementation(Dep.material)
-    implementation(Dep.AndroidX.hiltNavigationCompose)
+    implementation(Dep.AndroidX.activityCompose)
 
     testImplementation(Dep.junit)
-
-    implementation(Dep.AndroidX.activityCompose)
-    implementation(Dep.AndroidX.Compose.material)
-    implementation(Dep.AndroidX.Compose.materialIconsCore)
-    implementation(Dep.AndroidX.Compose.materialIconsExtended)
 
     implementation(Dep.Dagger.hiltAndroid)
     kapt(Dep.Dagger.hiltCompiler)
