@@ -29,19 +29,17 @@ class DetailViewModel @Inject constructor(
     val uiState: StateFlow<DetailUiState> = _uiState
 
     init {
-        if (code != null) {
-            viewModelScope.launch {
-                runCatching {
-                    _uiState.value = _uiState.value.copy(isLoading = true)
-                    countryRepository.fetchCountry(code)
-                }.onSuccess {
-                    _uiState.value = _uiState.value.copy(
-                        country = it,
-                        isLoading = false
-                    )
-                }.onFailure {
-                    _uiState.value = _uiState.value.copy(isLoading = false)
-                }
+        viewModelScope.launch {
+            runCatching {
+                _uiState.value = _uiState.value.copy(isLoading = true)
+                countryRepository.fetchCountry(code.orEmpty())
+            }.onSuccess {
+                _uiState.value = _uiState.value.copy(
+                    country = it,
+                    isLoading = false
+                )
+            }.onFailure {
+                _uiState.value = _uiState.value.copy(isLoading = false)
             }
         }
     }

@@ -18,9 +18,8 @@ class SearchViewModel @Inject constructor(
     data class SearchUiState(
         val countries: List<Country> = emptyList(),
         val isLoading: Boolean = false,
-    ) {
+    )
 
-    }
     private val _uiState = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiState
 
