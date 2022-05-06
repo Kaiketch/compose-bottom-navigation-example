@@ -1,4 +1,4 @@
-package com.redpond
+package com.redpond.country.repository
 
 import com.redpond.domain.repository.CountryRepository
 import dagger.Binds

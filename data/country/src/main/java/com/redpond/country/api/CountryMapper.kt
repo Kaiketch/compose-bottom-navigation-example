@@ -1,5 +1,7 @@
-package com.redpond
+package com.redpond.country.api
 
+import com.redpond.CountriesQuery
+import com.redpond.CountryQuery
 import com.redpond.domain.Country
 
 

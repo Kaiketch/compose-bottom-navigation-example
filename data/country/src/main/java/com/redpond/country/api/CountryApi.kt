@@ -1,6 +1,8 @@
-package com.redpond
+package com.redpond.country.api
 
 import com.apollographql.apollo3.ApolloClient
+import com.redpond.CountriesQuery
+import com.redpond.CountryQuery
 import com.redpond.domain.Country
 import javax.inject.Inject
 
