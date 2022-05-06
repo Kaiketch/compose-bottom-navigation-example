@@ -1,4 +1,4 @@
-package com.redpond.common.component
+package com.redpond.base.component
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn

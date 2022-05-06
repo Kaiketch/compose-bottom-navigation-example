@@ -21,7 +21,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
-    implementation(project(":ui:common"))
+    implementation(project(":ui:base"))
 
     testImplementation(Dep.junit)
     implementation(Dep.AndroidX.core)

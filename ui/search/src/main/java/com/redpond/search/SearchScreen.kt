@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.redpond.common.LocalNavController
-import com.redpond.common.Screen
+import com.redpond.base.LocalNavController
+import com.redpond.base.Screen
 
 @Composable
 fun SearchScreen(

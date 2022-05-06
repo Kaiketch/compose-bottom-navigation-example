@@ -51,7 +51,7 @@ dependencies {
     implementation(project(":data:country"))
     implementation(project(":data:schema"))
     implementation(project(":ui:main"))
-    implementation(project(":ui:common"))
+    implementation(project(":ui:base"))
     implementation(project(":ui:profile"))
     implementation(project(":ui:search"))
     implementation(project(":ui:favorite"))

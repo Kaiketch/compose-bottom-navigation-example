@@ -1,4 +1,4 @@
-package com.redpond.common
+package com.redpond.base
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons

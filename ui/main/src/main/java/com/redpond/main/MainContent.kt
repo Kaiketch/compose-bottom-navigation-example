@@ -22,10 +22,10 @@ import androidx.navigation.navArgument
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import com.redpond.common.Args.Companion.CODE
-import com.redpond.common.LocalNavController
-import com.redpond.common.Screen
-import com.redpond.common.bottomNavItems
+import com.redpond.base.Args.Companion.CODE
+import com.redpond.base.LocalNavController
+import com.redpond.base.Screen
+import com.redpond.base.bottomNavItems
 import com.redpond.favorite.FavoriteScreen
 import com.redpond.profile.ProfileScreen
 import com.redpond.search.DetailScreen

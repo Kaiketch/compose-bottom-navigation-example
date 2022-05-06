@@ -2,7 +2,7 @@ package com.redpond.search
 
 import androidx.lifecycle.SavedStateHandle
 import com.google.common.truth.Truth.assertThat
-import com.redpond.common.Args.Companion.CODE
+import com.redpond.base.Args.Companion.CODE
 import com.redpond.domain.Country
 import com.redpond.domain.repository.CountryRepository
 import io.mockk.MockKAnnotations

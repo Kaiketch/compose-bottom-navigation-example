@@ -1,4 +1,4 @@
-package com.redpond.common
+package com.redpond.base
 
 class Args {
     companion object{

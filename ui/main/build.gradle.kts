@@ -21,7 +21,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
-    implementation(project(":ui:common"))
+    implementation(project(":ui:base"))
     implementation(project(":ui:profile"))
     implementation(project(":ui:search"))
     implementation(project(":ui:favorite"))

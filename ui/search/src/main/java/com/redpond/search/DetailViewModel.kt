@@ -3,7 +3,7 @@ package com.redpond.search
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.redpond.common.Args.Companion.CODE
+import com.redpond.base.Args.Companion.CODE
 import com.redpond.domain.Country
 import com.redpond.domain.repository.CountryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
