@@ -20,7 +20,7 @@ class UserViewModel @Inject constructor(
         val isLoading: Boolean = false,
     )
 
-    private val _uiState = MutableStateFlow(UserUiState(User(name = "")))
+    private val _uiState = MutableStateFlow(UserUiState(User()))
     val uiState: StateFlow<UserUiState> = _uiState
 
     init {
@@ -44,6 +44,24 @@ class UserViewModel @Inject constructor(
             runCatching {
                 _uiState.value = _uiState.value.copy(isLoading = true)
                 userRepository.updateName(name)
+            }.mapCatching {
+                userRepository.fetchMe()
+            }.onSuccess { user ->
+                _uiState.value = _uiState.value.copy(
+                    user = user,
+                    isLoading = false
+                )
+            }.onFailure {
+                _uiState.value = _uiState.value.copy(isLoading = false)
+            }
+        }
+    }
+
+    fun onUpdateCountryClicked(code: String?) {
+        viewModelScope.launch {
+            runCatching {
+                _uiState.value = _uiState.value.copy(isLoading = true)
+                userRepository.updateCountryCode(requireNotNull(code))
             }.mapCatching {
                 userRepository.fetchMe()
             }.onSuccess { user ->
