@@ -17,8 +17,6 @@ dependencies {
     implementation(project(":data:schema"))
 
     testImplementation(Dep.junit)
-    implementation(Dep.AndroidX.core)
-    implementation(Dep.AndroidX.hiltNavigationCompose)
 
     implementation(Dep.Dagger.hiltAndroid)
     kapt(Dep.Dagger.hiltCompiler)
