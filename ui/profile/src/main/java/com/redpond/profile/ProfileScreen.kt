@@ -22,14 +22,14 @@ fun ProfileScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(id = R.string.screen_profile),
+                        text = stringResource(id = R.string.title, userUiState.user.name),
                     )
                 }
             )
         }
     ) {
         Text(
-            text = userUiState.name,
+            text = userUiState.user.name,
         )
     }
 }
