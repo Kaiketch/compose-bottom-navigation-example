@@ -23,7 +23,13 @@ dependencies {
     implementation(project(":domain"))
 
     testImplementation(Dep.junit)
+    testImplementation(Dep.mockk)
+    testImplementation(Dep.truth)
+    testImplementation(Dep.robolectric)
+    testImplementation(Dep.Kotlin.Coroutines.test)
     implementation(Dep.AndroidX.core)
+    implementation(Dep.AndroidX.viewModelCompose)
+    implementation(Dep.AndroidX.hiltNavigationCompose)
 
     implementation(Dep.AndroidX.appcompat)
     implementation(Dep.AndroidX.activityCompose)
