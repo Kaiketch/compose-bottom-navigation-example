@@ -11,10 +11,15 @@ internal class UserRepositoryImpl @Inject constructor(
 
     override suspend fun fetchMe(): User {
         val name = userPreferences.getName()
-        return User(name = name)
+        val code = userPreferences.getCountryCode()
+        return User(name = name, countryCode = code)
     }
 
     override suspend fun updateName(name: String) {
         userPreferences.saveName(name)
+    }
+
+    override suspend fun updateCountryCode(code: String) {
+        userPreferences.saveCountryCode(code)
     }
 }

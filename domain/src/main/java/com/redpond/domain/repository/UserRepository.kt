@@ -7,4 +7,6 @@ interface UserRepository {
     suspend fun fetchMe(): User
 
     suspend fun updateName(name: String)
+
+    suspend fun updateCountryCode(code: String)
 }
