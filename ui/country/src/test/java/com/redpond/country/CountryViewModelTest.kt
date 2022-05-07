@@ -1,4 +1,4 @@
-package com.redpond.search
+package com.redpond.country
 
 import androidx.lifecycle.SavedStateHandle
 import com.google.common.truth.Truth.assertThat
@@ -19,7 +19,7 @@ import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class DetailViewModelTest {
+class CountryViewModelTest {
 
     @MockK
     lateinit var countryRepository: CountryRepository
@@ -47,7 +47,7 @@ class DetailViewModelTest {
         coEvery { savedStateHandle.get<String>(CODE) } returns code
         coEvery { countryRepository.fetchCountry(code) } returns country
 
-        val viewModel = DetailViewModel(savedStateHandle, countryRepository)
+        val viewModel = com.redpond.country.CountryViewModel(savedStateHandle, countryRepository)
 
         assertThat(viewModel.uiState.value.country).isEqualTo(country)
         assertThat(viewModel.uiState.value.isLoading).isFalse()

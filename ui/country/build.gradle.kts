@@ -22,25 +22,22 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":ui:base"))
-    implementation(project(":ui:profile"))
-    implementation(project(":ui:search"))
-    implementation(project(":ui:favorite"))
-    implementation(project(":ui:country"))
 
     testImplementation(Dep.junit)
+    testImplementation(Dep.mockk)
+    testImplementation(Dep.truth)
+    testImplementation(Dep.robolectric)
+    testImplementation(Dep.Kotlin.Coroutines.test)
     implementation(Dep.AndroidX.core)
+    implementation(Dep.AndroidX.viewModelCompose)
     implementation(Dep.AndroidX.hiltNavigationCompose)
 
-    implementation(Dep.AndroidX.appcompat)
-    implementation(Dep.AndroidX.activityCompose)
     implementation(Dep.AndroidX.navigationCompose)
     implementation(Dep.AndroidX.Compose.ui)
     implementation(Dep.AndroidX.Compose.material)
     implementation(Dep.AndroidX.Compose.materialIconsCore)
     implementation(Dep.AndroidX.Compose.materialIconsExtended)
     implementation(Dep.AndroidX.Compose.uiTooling)
-
-    implementation(Dep.Accompanist.navigationAnimation)
 
     implementation(Dep.Dagger.hiltAndroid)
     kapt(Dep.Dagger.hiltCompiler)

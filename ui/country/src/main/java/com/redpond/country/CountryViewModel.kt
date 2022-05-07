@@ -1,4 +1,4 @@
-package com.redpond.search
+package com.redpond.country
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(
+class CountryViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val countryRepository: CountryRepository,
 ) : ViewModel() {

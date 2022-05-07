@@ -28,7 +28,6 @@ import com.redpond.base.Screen
 import com.redpond.base.bottomNavItems
 import com.redpond.favorite.FavoriteScreen
 import com.redpond.profile.ProfileScreen
-import com.redpond.search.DetailScreen
 import com.redpond.search.SearchScreen
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -120,7 +119,7 @@ fun AppNavHost(
             "${Screen.Detail.route}/{$CODE}",
             arguments = listOf(navArgument(CODE) { type = NavType.StringType }),
         ) {
-            DetailScreen()
+            com.redpond.country.CountryScreen()
         }
 
         composable(Screen.Favorite.route) { FavoriteScreen() }

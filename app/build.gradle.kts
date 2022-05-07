@@ -55,6 +55,7 @@ dependencies {
     implementation(project(":ui:profile"))
     implementation(project(":ui:search"))
     implementation(project(":ui:favorite"))
+    implementation(project(":ui:country"))
 
     implementation(Dep.AndroidX.core)
     implementation(Dep.material)

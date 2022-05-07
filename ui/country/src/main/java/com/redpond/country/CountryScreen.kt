@@ -1,4 +1,4 @@
-package com.redpond.search
+package com.redpond.country
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,11 +16,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.redpond.base.LocalNavController
 
 @Composable
-fun DetailScreen(
-    detailViewModel: DetailViewModel = hiltViewModel()
+fun CountryScreen(
+    countryViewModel: CountryViewModel = hiltViewModel()
 ) {
     val navController = LocalNavController.current
-    val uiState by detailViewModel.uiState.collectAsState()
+    val uiState by countryViewModel.uiState.collectAsState()
 
     Scaffold(
         topBar = {
