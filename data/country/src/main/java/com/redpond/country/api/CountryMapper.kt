@@ -10,6 +10,8 @@ object CountryMapper {
         Country(
             country.code,
             country.name,
+            country.capital,
+            country.currency
         )
 
     fun map(country: CountriesQuery.Country): Country =
