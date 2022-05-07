@@ -13,13 +13,11 @@ sealed class Screen(
     val icon: ImageVector? = null
 ) {
     object Search : Screen("screen_search", R.string.screen_search, Icons.Filled.Search)
-    object Favorite : Screen("screen_favorite", R.string.screen_favorite, Icons.Filled.Favorite)
     object Profile : Screen("screen_account", R.string.screen_profile, Icons.Filled.Person)
     object Detail : Screen("screen_detail", R.string.screen_detail)
 }
 
 val bottomNavItems = listOf(
     Screen.Search,
-    Screen.Favorite,
     Screen.Profile,
 )

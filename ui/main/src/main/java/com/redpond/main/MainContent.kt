@@ -26,7 +26,6 @@ import com.redpond.base.Args.Companion.CODE
 import com.redpond.base.LocalNavController
 import com.redpond.base.Screen
 import com.redpond.base.bottomNavItems
-import com.redpond.favorite.FavoriteScreen
 import com.redpond.profile.ProfileScreen
 import com.redpond.search.SearchScreen
 
@@ -121,9 +120,6 @@ fun AppNavHost(
         ) {
             com.redpond.country.CountryScreen()
         }
-
-        composable(Screen.Favorite.route) { FavoriteScreen() }
-
         composable(Screen.Profile.route) { ProfileScreen() }
     }
 }
