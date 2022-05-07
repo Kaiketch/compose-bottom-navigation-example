@@ -36,18 +36,20 @@ fun SearchScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(id = R.string.title, userUiState.user.name),
+                        text = stringResource(id = R.string.title, userUiState.user.name.orEmpty()),
                     )
                 }
             )
         }
     ) {
-        LazyColumn {
-            items(uiState.countries) {
+        LazyColumn(modifier = Modifier.padding(it)) {
+            items(uiState.countries) { item ->
                 Text(
-                    text = it.name,
+                    text = "【${item.code}】${item.name}",
                     modifier = Modifier
-                        .clickable { navController.navigate("${Screen.Detail.route}/${it.code}") }
+                        .clickable {
+                            navController.navigate("${Screen.Detail.route}/${item.code}")
+                        }
                         .padding(16.dp)
                         .fillMaxWidth()
                 )
