@@ -30,8 +30,18 @@ internal class UserPreferences @Inject constructor(
             .orEmpty()
     }
 
+    suspend fun saveCountryCode(code: String) {
+        context.dataStore.edit { it[COUNTRY_CODE] = code }
+    }
+
+    suspend fun getCountryCode(): String {
+        return context.dataStore.data.map { preferences -> preferences[COUNTRY_CODE] }.firstOrNull()
+            .orEmpty()
+    }
+
     companion object {
         const val USER_PREFERENCES = "user_preferences"
         val NAME = stringPreferencesKey("name")
+        val COUNTRY_CODE = stringPreferencesKey("country_code")
     }
 }
