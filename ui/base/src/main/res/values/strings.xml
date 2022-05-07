@@ -1,6 +1,5 @@
 <resources>
     <string name="title">Hello %1$s</string>
-    <string name="screen_search">Search</string>
-    <string name="screen_profile">Profile</string>
-    <string name="screen_detail">Detail</string>
+    <string name="tab_search">Search</string>
+    <string name="tab_profile">Profile</string>
 </resources>
