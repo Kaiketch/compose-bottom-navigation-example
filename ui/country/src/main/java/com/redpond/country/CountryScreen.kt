@@ -1,8 +1,6 @@
 package com.redpond.country
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -27,7 +25,7 @@ fun CountryScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(id = R.string.screen_detail),
+                        text = uiState.country?.name.orEmpty(),
                     )
                 },
                 navigationIcon = {
@@ -42,9 +40,28 @@ fun CountryScreen(
         }
     ) {
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .padding(it)
+                .padding(16.dp)
         ) {
-            Text(text = uiState.country?.name.orEmpty(), modifier = Modifier.padding(16.dp))
+            Text(text = "name")
+            Text(text = uiState.country?.name.orEmpty())
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(text = "capital",)
+            Text(text = uiState.country?.capital.orEmpty())
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(text = "currency",)
+            Text(text = uiState.country?.currency.orEmpty())
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(onClick = { }) {
+                Text(text = "Submit")
+            }
         }
     }
 }
