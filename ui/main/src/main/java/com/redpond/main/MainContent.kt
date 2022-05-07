@@ -66,7 +66,7 @@ fun AppBottomNavigation(
             val icon = screen.icon
             BottomNavigationItem(
                 icon = { icon?.let { Icon(icon, null) } },
-                label = { Text(stringResource(screen.resourceId)) },
+                label = { screen.resourceId?.let { Text(stringResource(it)) } },
                 selected = currentDestination?.route == screen.route,
                 onClick = {
                     navController.navigate(screen.route) {
