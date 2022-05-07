@@ -1,12 +1,14 @@
 package com.redpond.profile
 
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.redpond.base.LocalActivity
 import com.redpond.base.viewmodel.UserViewModel
@@ -28,8 +30,22 @@ fun ProfileScreen(
             )
         }
     ) {
-        Text(
-            text = userUiState.user.name,
-        )
+        Column(
+            modifier = Modifier
+                .padding(it)
+                .padding(16.dp)
+        ) {
+
+            Text(text = "name")
+
+            var name by remember { mutableStateOf(userUiState.user.name) }
+            TextField(value = name, onValueChange = { value -> name = value })
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(onClick = { userViewModel.onUpdateNameClicked(name) }) {
+                Text(text = "Submit")
+            }
+        }
     }
 }
