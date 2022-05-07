@@ -15,6 +15,7 @@ android {
 dependencies {
     implementation(project(":domain"))
 
+    implementation(Dep.AndroidX.dataStorePreferences)
     testImplementation(Dep.junit)
 
     implementation(Dep.Dagger.hiltAndroid)

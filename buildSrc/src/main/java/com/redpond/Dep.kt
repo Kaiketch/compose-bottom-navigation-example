@@ -30,6 +30,7 @@ object Dep {
         const val navigationCompose = "androidx.navigation:navigation-compose:2.5.0-alpha04"
         const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
         const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
+        const val dataStorePreferences = "androidx.datastore:datastore-preferences:1.0.0"
 
         object Compose {
             const val ui = "androidx.compose.ui:ui:${Versions.compose}"
