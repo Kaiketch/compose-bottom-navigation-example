@@ -28,6 +28,8 @@ dependencies {
     implementation(Dep.AndroidX.viewModelCompose)
     implementation(Dep.AndroidX.hiltNavigationCompose)
 
+    implementation(Dep.AndroidX.appcompat)
+    implementation(Dep.AndroidX.activityCompose)
     implementation(Dep.AndroidX.navigationCompose)
     implementation(Dep.AndroidX.Compose.ui)
     implementation(Dep.AndroidX.Compose.material)
