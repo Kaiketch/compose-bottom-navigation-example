@@ -1,4 +1,5 @@
 <resources>
+    <string name="title">Hello %1$s</string>
     <string name="screen_search">Search</string>
     <string name="screen_favorite">Favorite</string>
     <string name="screen_profile">Profile</string>

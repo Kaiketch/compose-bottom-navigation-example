@@ -30,7 +30,7 @@ import com.redpond.favorite.FavoriteScreen
 import com.redpond.profile.ProfileScreen
 import com.redpond.search.SearchScreen
 
-@OptIn(ExperimentalAnimationApi::class)
+@ExperimentalAnimationApi
 @Composable
 fun MainContent() {
     val navController = rememberAnimatedNavController()
@@ -83,7 +83,7 @@ fun AppBottomNavigation(
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
+@ExperimentalAnimationApi
 @Composable
 fun AppNavHost(
     navController: NavHostController,

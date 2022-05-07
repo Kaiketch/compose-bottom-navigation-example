@@ -4,12 +4,14 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.CompositionLocalProvider
 import com.redpond.base.LocalActivity
 import com.redpond.base.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalAnimationApi
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
