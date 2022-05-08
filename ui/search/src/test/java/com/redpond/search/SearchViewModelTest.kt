@@ -34,7 +34,7 @@ class SearchViewModelTest {
     }
 
     @Test
-    fun textInit_success() = runTest {
+    fun testInit_success() = runTest {
 
         val list = listOf(
             Country("c1", "country1"),

@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
@@ -39,7 +40,7 @@ class CountryViewModelTest {
     }
 
     @Test
-    fun testInit_success() {
+    fun testInit_success() = runTest {
 
         val code = "c1"
         val country = Country(code, "name1")
@@ -47,7 +48,7 @@ class CountryViewModelTest {
         coEvery { savedStateHandle.get<String>(CODE) } returns code
         coEvery { countryRepository.fetchCountry(code) } returns country
 
-        val viewModel = com.redpond.country.CountryViewModel(savedStateHandle, countryRepository)
+        val viewModel = CountryViewModel(savedStateHandle, countryRepository)
 
         assertThat(viewModel.uiState.value.country).isEqualTo(country)
         assertThat(viewModel.uiState.value.isLoading).isFalse()

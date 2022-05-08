@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
@@ -32,7 +33,7 @@ class UserViewModelTest {
     }
 
     @Test
-    fun testInit_success() {
+    fun testInit_success() = runTest {
         val user = User(name = null, countryCode = null)
         coEvery { userRepository.fetchMe() } returns user
         val userViewModel = UserViewModel(userRepository)
@@ -42,7 +43,7 @@ class UserViewModelTest {
     }
 
     @Test
-    fun testOnUpdateNameClicked_success() {
+    fun testOnUpdateNameClicked_success() = runTest {
         val name = "name1"
         coEvery { userRepository.updateName(name) } just Runs
         val userViewModel = UserViewModel(userRepository)
@@ -57,7 +58,7 @@ class UserViewModelTest {
     }
 
     @Test
-    fun onUpdateCountryClicked() {
+    fun onUpdateCountryClicked_success() = runTest {
         val countryCode = "c1"
         coEvery { userRepository.updateCountryCode(countryCode) } just Runs
         val userViewModel = UserViewModel(userRepository)
