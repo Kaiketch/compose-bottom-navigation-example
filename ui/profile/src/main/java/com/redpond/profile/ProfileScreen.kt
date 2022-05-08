@@ -1,14 +1,9 @@
 package com.redpond.profile
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -59,12 +54,24 @@ fun ProfileScreen(
             Spacer(modifier = Modifier.height(48.dp))
 
             Text(text = "country code")
-            userUiState.user.countryCode?.let {
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            userUiState.user.countryCode?.let { code ->
+                Text(text = code)
+
+                Spacer(modifier = Modifier.height(8.dp))
+
                 Button(
                     onClick = { navController.navigate("${Screen.Detail.route}/${it}") }
                 ) {
-                    Text(text = it)
+                    Text(text = "Open")
                 }
+            }
+        }
+        if (userUiState.isLoading) {
+            Box(modifier = Modifier.fillMaxSize()) {
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         }
     }
