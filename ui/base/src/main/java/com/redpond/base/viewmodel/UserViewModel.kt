@@ -44,11 +44,9 @@ class UserViewModel @Inject constructor(
             runCatching {
                 _uiState.value = _uiState.value.copy(isLoading = true)
                 userRepository.updateName(name)
-            }.mapCatching {
-                userRepository.fetchMe()
-            }.onSuccess { user ->
+            }.onSuccess {
                 _uiState.value = _uiState.value.copy(
-                    user = user,
+                    user = _uiState.value.user.copy(name = name),
                     isLoading = false
                 )
             }.onFailure {
@@ -62,11 +60,9 @@ class UserViewModel @Inject constructor(
             runCatching {
                 _uiState.value = _uiState.value.copy(isLoading = true)
                 userRepository.updateCountryCode(requireNotNull(code))
-            }.mapCatching {
-                userRepository.fetchMe()
-            }.onSuccess { user ->
+            }.onSuccess {
                 _uiState.value = _uiState.value.copy(
-                    user = user,
+                    user = _uiState.value.user.copy(countryCode = code),
                     isLoading = false
                 )
             }.onFailure {
