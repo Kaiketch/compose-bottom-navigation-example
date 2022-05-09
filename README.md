@@ -1,4 +1,6 @@
-# compose-graphql-example
+# newt-architecture-example
+
+[海外旅行予約アプリ「NEWT」（ニュート）](https://newt.net/app) のAndroidアーキテクチャ構想用
 
 ## 主な技術スタック
 - Jetpack Compose
