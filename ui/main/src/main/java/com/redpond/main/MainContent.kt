@@ -11,6 +11,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
@@ -29,6 +30,7 @@ import com.redpond.base.bottomNavItems
 import com.redpond.profile.ProfileScreen
 import com.redpond.search.SearchScreen
 
+@ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 @Composable
 fun MainContent() {
@@ -82,6 +84,7 @@ fun AppBottomNavigation(
     }
 }
 
+@ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 @Composable
 fun AppNavHost(

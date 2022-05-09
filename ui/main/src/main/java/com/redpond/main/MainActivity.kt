@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.ExperimentalComposeUiApi
 import com.redpond.base.LocalActivity
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
