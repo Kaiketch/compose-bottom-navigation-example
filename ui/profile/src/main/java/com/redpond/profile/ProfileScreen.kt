@@ -63,7 +63,7 @@ fun ProfileScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Button(
-                    onClick = { navController.navigate("${Screen.Detail.route}/${it}") }
+                    onClick = { navController.navigate("${Screen.Detail.route}/${code}") }
                 ) {
                     Text(text = "Open")
                 }
