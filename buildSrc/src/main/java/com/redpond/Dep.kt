@@ -1,7 +1,7 @@
 package com.redpond
 
 object Versions {
-    const val compose = "1.2.0-alpha07"
+    const val compose = "1.2.0"
 }
 
 object Dep {
@@ -13,7 +13,7 @@ object Dep {
     const val robolectric = "org.robolectric:robolectric:4.7.3"
 
     object Kotlin {
-        private const val version = "1.6.10"
+        private const val version = "1.7.0"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
 
         object Coroutines {
@@ -26,25 +26,25 @@ object Dep {
     object AndroidX {
         const val core = "androidx.core:core-ktx:1.8.0-alpha07"
         const val appcompat = "androidx.appcompat:appcompat:1.6.0-alpha01"
-        const val activityCompose = "androidx.activity:activity-compose:1.6.0-alpha01"
-        const val navigationCompose = "androidx.navigation:navigation-compose:2.5.0-alpha04"
-        const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+        const val activityCompose = "androidx.activity:activity-compose:1.6.0-alpha05"
+        const val navigationCompose = "androidx.navigation:navigation-compose:2.5.0"
+        const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-rc02"
         const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
         const val dataStorePreferences = "androidx.datastore:datastore-preferences:1.0.0"
 
         object Compose {
-            const val ui = "androidx.compose.ui:ui:${Versions.compose}"
-            const val material = "androidx.compose.material:material:${Versions.compose}"
+            const val ui = "androidx.compose.ui:ui:1.2.0-rc02"
+            const val material = "androidx.compose.material:material:1.2.0-rc02"
             const val materialIconsCore =
-                "androidx.compose.material:material-icons-core:${Versions.compose}"
+                "androidx.compose.material:material-icons-core:1.2.0-rc02"
             const val materialIconsExtended =
-                "androidx.compose.material:material-icons-extended:${Versions.compose}"
-            const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+                "androidx.compose.material:material-icons-extended:1.2.0-rc02"
+            const val uiTooling = "androidx.compose.ui:ui-tooling:1.2.0-rc02"
         }
     }
 
     object Dagger {
-        private const val version = "2.41"
+        private const val version = "2.42"
         const val hiltAndroidGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
         const val hiltCompiler = "com.google.dagger:hilt-android-compiler:$version"
