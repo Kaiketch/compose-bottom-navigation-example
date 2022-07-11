@@ -39,8 +39,6 @@ dependencies {
     implementation(Dep.AndroidX.Compose.materialIconsExtended)
     implementation(Dep.AndroidX.Compose.uiTooling)
 
-    implementation(Dep.Accompanist.navigationAnimation)
-
     implementation(Dep.Dagger.hiltAndroid)
     kapt(Dep.Dagger.hiltCompiler)
 }

@@ -55,10 +55,4 @@ object Dep {
         const val gradlePlugin = "com.apollographql.apollo3:apollo-gradle-plugin:$version"
         const val runtime = "com.apollographql.apollo3:apollo-runtime:$version"
     }
-
-    object Accompanist {
-        private const val version = "0.24.6-alpha"
-        const val navigationAnimation =
-            "com.google.accompanist:accompanist-navigation-animation:$version"
-    }
 }

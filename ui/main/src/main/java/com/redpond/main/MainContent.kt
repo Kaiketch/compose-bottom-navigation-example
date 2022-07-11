@@ -1,10 +1,6 @@
 package com.redpond.main
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.snap
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
@@ -18,11 +14,11 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.redpond.base.Args.Companion.CODE
 import com.redpond.base.LocalNavController
 import com.redpond.base.Screen
@@ -34,7 +30,7 @@ import com.redpond.search.SearchScreen
 @ExperimentalAnimationApi
 @Composable
 fun MainContent() {
-    val navController = rememberAnimatedNavController()
+    val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
@@ -91,30 +87,10 @@ fun AppNavHost(
     navController: NavHostController,
     paddingValues: PaddingValues
 ) {
-    AnimatedNavHost(
+    NavHost(
         navController = navController,
         startDestination = Screen.Search.route,
         modifier = Modifier.padding(paddingValues),
-        enterTransition = {
-            // BottomNav画面同士の遷移ではEnterアニメーションは切る
-            if (bottomNavItems.map { it.route }.contains(initialState.destination.route) &&
-                bottomNavItems.map { it.route }.contains(targetState.destination.route)
-            ) {
-                fadeIn(animationSpec = snap())
-            } else {
-                fadeIn(animationSpec = tween(500))
-            }
-        },
-        exitTransition = {
-            // BottomNav画面との遷移ではチラつき対策も含め遷移元のExitアニメーションを切る
-            if (bottomNavItems.map { it.route }.contains(initialState.destination.route) ||
-                bottomNavItems.map { it.route }.contains(targetState.destination.route)
-            ) {
-                fadeOut(animationSpec = snap())
-            } else {
-                fadeOut(animationSpec = tween(500))
-            }
-        },
     ) {
         composable(Screen.Search.route) { SearchScreen() }
         composable(
