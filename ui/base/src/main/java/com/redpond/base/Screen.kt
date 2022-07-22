@@ -6,6 +6,13 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 
+sealed class Graph(
+    val route: String
+) {
+    object Search : Graph("graph_search")
+    object Profile : Graph("graph_profile")
+}
+
 sealed class Screen(
     val route: String,
     @StringRes val resourceId: Int? = null,

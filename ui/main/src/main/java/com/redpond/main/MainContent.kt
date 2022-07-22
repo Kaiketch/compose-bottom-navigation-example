@@ -10,24 +10,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavDestination
+import androidx.navigation.*
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.NavHostController
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
+import androidx.navigation.compose.*
+import androidx.navigation.compose.navigation
 import com.redpond.base.Args.Companion.CODE
+import com.redpond.base.Graph
 import com.redpond.base.LocalNavController
 import com.redpond.base.Screen
 import com.redpond.base.bottomNavItems
+import com.redpond.country.CountryScreen
 import com.redpond.profile.ProfileScreen
 import com.redpond.search.SearchScreen
 
 @ExperimentalComposeUiApi
-@ExperimentalAnimationApi
 @Composable
 fun MainContent() {
     val navController = rememberNavController()
@@ -80,8 +76,6 @@ fun AppBottomNavigation(
     }
 }
 
-@ExperimentalComposeUiApi
-@ExperimentalAnimationApi
 @Composable
 fun AppNavHost(
     navController: NavHostController,
@@ -89,16 +83,30 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Search.route,
+        startDestination = Graph.Search.route,
         modifier = Modifier.padding(paddingValues),
     ) {
-        composable(Screen.Search.route) { SearchScreen() }
+        searchGraph(navController = navController)
+        profileGraph(navController = navController)
+    }
+}
+
+fun NavGraphBuilder.searchGraph(navController: NavHostController) {
+    navigation(startDestination = Screen.Search.route, route = Graph.Search.route) {
+        composable(Screen.Search.route) {
+            SearchScreen()
+        }
         composable(
             "${Screen.Detail.route}/{$CODE}",
             arguments = listOf(navArgument(CODE) { type = NavType.StringType }),
         ) {
-            com.redpond.country.CountryScreen()
+            CountryScreen()
         }
+    }
+}
+
+fun NavGraphBuilder.profileGraph(navController: NavHostController) {
+    navigation(startDestination = Screen.Profile.route, route = Graph.Profile.route) {
         composable(Screen.Profile.route) { ProfileScreen() }
     }
 }
