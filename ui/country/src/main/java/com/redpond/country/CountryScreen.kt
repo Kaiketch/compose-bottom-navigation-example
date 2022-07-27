@@ -10,18 +10,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.redpond.base.LocalActivity
-import com.redpond.base.LocalNavController
 import com.redpond.base.viewmodel.UserViewModel
 
 @Composable
 fun CountryScreen(
-    userViewModel: UserViewModel = viewModel(LocalActivity.current),
-    countryViewModel: CountryViewModel = hiltViewModel()
+    userViewModel: UserViewModel,
+    countryViewModel: CountryViewModel,
+    popBackStack: () -> Unit
 ) {
-    val navController = LocalNavController.current
     val countryUiState by countryViewModel.uiState.collectAsState()
 
     Scaffold(
@@ -33,7 +29,7 @@ fun CountryScreen(
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { popBackStack() }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = null,
@@ -71,7 +67,7 @@ fun CountryScreen(
             Button(
                 onClick = {
                     userViewModel.onUpdateCountryClicked(countryUiState.country?.code)
-                    navController.popBackStack()
+                    popBackStack()
                 }
             ) {
                 Text(text = "Update")

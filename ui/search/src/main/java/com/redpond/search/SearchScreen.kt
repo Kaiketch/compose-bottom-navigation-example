@@ -15,19 +15,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.redpond.base.LocalActivity
-import com.redpond.base.LocalNavController
-import com.redpond.base.Screen
 import com.redpond.base.viewmodel.UserViewModel
 
 @Composable
 fun SearchScreen(
-    userViewModel: UserViewModel = viewModel(LocalActivity.current),
-    searchViewModel: SearchViewModel = hiltViewModel()
+    userViewModel: UserViewModel,
+    searchViewModel: SearchViewModel,
+    navigateToCountry: (countryCode: String) -> Unit
 ) {
-    val navController = LocalNavController.current
     val userUiState by userViewModel.uiState.collectAsState()
     val searchUiState by searchViewModel.uiState.collectAsState()
 
@@ -48,7 +43,7 @@ fun SearchScreen(
                     text = "【${item.code}】${item.name}",
                     modifier = Modifier
                         .clickable {
-                            navController.navigate("${Screen.Detail.route}/${item.code}")
+                            navigateToCountry(item.code)
                         }
                         .padding(16.dp)
                         .fillMaxWidth()

@@ -1,6 +1,5 @@
 package com.redpond.main
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
@@ -10,15 +9,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.*
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.compose.*
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
+import androidx.navigation.compose.rememberNavController
+import com.redpond.base.*
 import com.redpond.base.Args.Companion.CODE
-import com.redpond.base.Graph
-import com.redpond.base.LocalNavController
-import com.redpond.base.Screen
-import com.redpond.base.bottomNavItems
 import com.redpond.country.CountryScreen
 import com.redpond.profile.ProfileScreen
 import com.redpond.search.SearchScreen
@@ -94,19 +94,36 @@ fun AppNavHost(
 fun NavGraphBuilder.searchGraph(navController: NavHostController) {
     navigation(startDestination = Screen.Search.route, route = Graph.Search.route) {
         composable(Screen.Search.route) {
-            SearchScreen()
+            SearchScreen(
+                userViewModel = hiltViewModel(LocalActivity.current),
+                searchViewModel = hiltViewModel(),
+                navigateToCountry = { countryCode ->
+                    navController.navigate("${Screen.Detail.route}/$countryCode")
+                }
+            )
         }
         composable(
             "${Screen.Detail.route}/{$CODE}",
             arguments = listOf(navArgument(CODE) { type = NavType.StringType }),
         ) {
-            CountryScreen()
+            CountryScreen(
+                userViewModel = hiltViewModel(LocalActivity.current),
+                countryViewModel = hiltViewModel(),
+                popBackStack = { navController.popBackStack() }
+            )
         }
     }
 }
 
 fun NavGraphBuilder.profileGraph(navController: NavHostController) {
     navigation(startDestination = Screen.Profile.route, route = Graph.Profile.route) {
-        composable(Screen.Profile.route) { ProfileScreen() }
+        composable(Screen.Profile.route) {
+            ProfileScreen(
+                userViewModel = hiltViewModel(LocalActivity.current),
+                navigateToCountry = { countryCode ->
+                    navController.navigate("${Screen.Detail.route}/$countryCode")
+                }
+            )
+        }
     }
 }
