@@ -1,13 +1,18 @@
 package com.redpond.main
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.*
@@ -19,6 +24,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.redpond.base.*
 import com.redpond.base.Args.Companion.CODE
+import com.redpond.base.R
 import com.redpond.country.CountryScreen
 import com.redpond.profile.ProfileScreen
 import com.redpond.search.SearchScreen
@@ -87,6 +93,7 @@ fun AppNavHost(
         modifier = Modifier.padding(paddingValues),
     ) {
         searchGraph(navController = navController)
+        countryGraph(navController = navController)
         profileGraph(navController = navController)
     }
 }
@@ -98,12 +105,17 @@ fun NavGraphBuilder.searchGraph(navController: NavHostController) {
                 userViewModel = hiltViewModel(LocalActivity.current),
                 searchViewModel = hiltViewModel(),
                 navigateToCountry = { countryCode ->
-                    navController.navigate("${Screen.Detail.route}/$countryCode")
+                    navController.navigate("${Graph.Country.route}/$countryCode")
                 }
             )
         }
+    }
+}
+
+fun NavGraphBuilder.countryGraph(navController: NavHostController) {
+    navigation(startDestination = "${Screen.Country.route}/{$CODE}", route = "${Graph.Country.route}/{$CODE}") {
         composable(
-            "${Screen.Detail.route}/{$CODE}",
+            "${Screen.Country.route}/{$CODE}",
             arguments = listOf(navArgument(CODE) { type = NavType.StringType }),
         ) {
             CountryScreen(
@@ -121,9 +133,33 @@ fun NavGraphBuilder.profileGraph(navController: NavHostController) {
             ProfileScreen(
                 userViewModel = hiltViewModel(LocalActivity.current),
                 navigateToCountry = { countryCode ->
-                    navController.navigate("${Screen.Detail.route}/$countryCode")
+                    navController.navigate("${Screen.Country.route}/$countryCode")
                 }
             )
         }
     }
 }
+
+sealed class Graph(
+    val route: String
+) {
+    object Search : Graph("graph_search")
+    object Country : Graph("graph_country")
+    object Profile : Graph("graph_profile")
+}
+
+sealed class Screen(
+    val route: String,
+    @StringRes val resourceId: Int? = null,
+    val icon: ImageVector? = null
+) {
+    object Search : Screen("screen_search", R.string.tab_search, Icons.Filled.Search)
+    object Profile : Screen("screen_account", R.string.tab_profile, Icons.Filled.Person)
+    object Country : Screen("screen_country")
+}
+
+val bottomNavItems = listOf(
+    Screen.Search,
+    Screen.Profile,
+)
+
