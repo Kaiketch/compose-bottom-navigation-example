@@ -5,8 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.redpond.domain.User
 import com.redpond.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,17 +24,15 @@ class UserViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            runCatching {
-                _uiState.value = _uiState.value.copy(isLoading = true)
-                userRepository.fetchMe()
-            }.onSuccess { user ->
-                _uiState.value = _uiState.value.copy(
-                    user = user,
-                    isLoading = false
-                )
-            }.onFailure {
-                _uiState.value = _uiState.value.copy(isLoading = false)
-            }
+            combine(userRepository.fetchName(), userRepository.fetchCountryCode(), ::Pair)
+                .onStart { _uiState.value = _uiState.value.copy(isLoading = true) }
+                .catch { _uiState.value = _uiState.value.copy(isLoading = false) }
+                .collect { (name, countryCode) ->
+                    _uiState.value = _uiState.value.copy(
+                        user = User(name = name, countryCode = countryCode),
+                        isLoading = false
+                    )
+                }
         }
     }
 
