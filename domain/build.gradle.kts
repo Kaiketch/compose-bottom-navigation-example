@@ -12,5 +12,7 @@ android {
 }
 
 dependencies {
+    implementation(Dep.Kotlin.Coroutines.core)
+
     testImplementation(Dep.junit)
 }
