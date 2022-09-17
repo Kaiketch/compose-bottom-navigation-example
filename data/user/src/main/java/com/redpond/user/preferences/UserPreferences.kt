@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -25,18 +26,16 @@ internal class UserPreferences @Inject constructor(
         context.dataStore.edit { it[NAME] = name }
     }
 
-    suspend fun getName(): String {
-        return context.dataStore.data.map { preferences -> preferences[NAME] }.firstOrNull()
-            .orEmpty()
+    fun getName(): Flow<String?> {
+        return context.dataStore.data.map { preferences -> preferences[NAME] }
     }
 
     suspend fun saveCountryCode(code: String) {
         context.dataStore.edit { it[COUNTRY_CODE] = code }
     }
 
-    suspend fun getCountryCode(): String {
-        return context.dataStore.data.map { preferences -> preferences[COUNTRY_CODE] }.firstOrNull()
-            .orEmpty()
+    fun getCountryCode(): Flow<String?> {
+        return context.dataStore.data.map { preferences -> preferences[COUNTRY_CODE] }
     }
 
     companion object {
