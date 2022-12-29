@@ -6,6 +6,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("com.apollographql.apollo3")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -19,4 +20,7 @@ apollo {
 dependencies {
     testImplementation(Dep.junit)
     api(Dep.Apollo.runtime)
+
+    implementation(Dep.Dagger.hiltAndroid)
+    kapt(Dep.Dagger.hiltCompiler)
 }

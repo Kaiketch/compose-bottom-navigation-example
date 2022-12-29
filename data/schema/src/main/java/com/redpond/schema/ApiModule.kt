@@ -1,4 +1,4 @@
-package com.redpond.composebuttomnavigationexample
+package com.redpond.schema
 
 import com.apollographql.apollo3.ApolloClient
 import dagger.Module
